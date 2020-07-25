@@ -149,7 +149,7 @@ The trained model is required to be  compiled to the special format for running 
 
    The fixed model will be in `./vitisAI/frozon_result`.
 
-5. on vitisAI under dockder,  then, run the follow script for quantizing model:
+5. on vitisAI under dockder,  then, run the follow script for quantizing model (Note: It is necessary to provide more than or equal to 50 pieces of training data for verification during quantization to ensure the accuracy of the model):
 
    ```bash
    ./2_vitisAI_tf_quantize.sh
