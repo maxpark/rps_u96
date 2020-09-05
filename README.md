@@ -1,55 +1,75 @@
 # RpsU96
 
+   come from https://github.com/linxiaobo110/rps_u96
+   
 
 
 ![](imgs/README/result.gif)
 
 # Introduction
 
-This project implements the gesture recognition for a common game rock-scissors-paper, including three parts: model training on PC, model compile on Vitis-AI and model calling on Ultra 96. Firstly, a seven layers deep network is trained with tensorflow on PC,  in which the dataset from Google is utilized. Then, the `h5` model generated with `tensorflow 2` is compiled into a `elf` model with Vitis AI docker. The compiled result is able to be run on the edge platform like Ultra96. Finally, a scheme including camera reading, model calling and model validating is implemented with jupyter-notebook on the edge platform.
+This project implements the gesture recognition for a common game rock-scissors-paper,  
+including three parts: model training on PC, model compile on Vitis-AI and model calling on Ultra 96.  
+Firstly, a seven layers deep network is trained with tensorflow on PC,  in which the dataset from Google is utilized.  
 
->  This project is based on PYNQ-DPU, and is compatible with Ultra 96 V2.
+Then, the `h5` model generated with `tensorflow 2` is compiled into a `elf` model with Vitis AI docker.  
+The compiled result is able to be run on the edge platform like Ultra96.  
+
+Finally, a scheme including 
+   camera reading,  
+   model calling  
+   and model validating is implemented with jupyter-notebook on the edge platform.
+
+
+>  This project is based on PYNQ-DPU, and is compatible with **Ultra 96 V2.**
+
 
 ## Files in project
 
 ```bash
 root:[rps_u96]
-+--1.compile.sh
-+--2.dpuRps.ipynb
-+--dataset
-+--dataset_valid
-+--DpuCar.py
-+--imgs
-+--prebuilt
-|      +--dpu_dpuCarModel_0.elf
-|      +--model.h5
-+--README.md
-+--run
-+--train.py
-+--vitisAI
-|      +--1_vitisAI_keras2frozon.sh
-|      +--2_vitisAI_tf_quantize.sh
-|      +--3_vitisAI_tf_compile.sh
-|      +--dataset_valid
-|      +--dpuPynq.dcf
-|      +--graph_input_fn.py
-|      +--keras_to_tensorflow.py
-|      +--model.h5
-|      +--u96pynq.json
+   +--1.compile.sh
+   +--2.dpuRps.ipynb
+   +--dataset
+   +--dataset_valid
+   +--DpuCar.py
+   +--imgs
+   +--prebuilt
+   |      +--dpu_dpuCarModel_0.elf
+   |      +--model.h5
+   +--README.md
+   +--run
+   +--train.py
+   +--vitisAI
+   |      +--1_vitisAI_keras2frozon.sh
+   |      +--2_vitisAI_tf_quantize.sh
+   |      +--3_vitisAI_tf_compile.sh
+   |      +--dataset_valid
+   |      +--dpuPynq.dcf
+   |      +--graph_input_fn.py
+   |      +--keras_to_tensorflow.py
+   |      +--model.h5
+   |      +--u96pynq.json
 ```
 
 where the key files are shown as follow:
 
-- The network training related file is `train.py`. The trained result will be in res `run` and the dataset used for training is in `dataset`
+- The network training related file is `train.py`. 
+The trained result will be in res `run` and the dataset used for training is in `dataset`
 
-- The model compile files is in dir `vitsiAI`. The compiled result will be in `vitisAI/compile_result`, the valid data used for quantizing is in `vitisAI/dataset_valid`.
+- The model compile files is in dir `vitsiAI`. 
+The compiled result will be in `vitisAI/compile_result`, 
+the valid data used for quantizing is in `vitisAI/dataset_valid`.
 
-- The main file with edge is in the root, including`1.compile.sh` which translate the `elf` file to `so` model. `2.dpuCar.ipynb` is main program, which can  run under U96 directly. `DpuCar.py` is a dpu helper prepared for `2.dpuCar.ipynb`.
+- The main file with edge is in the root, including`1.compile.sh` which translate the `elf` file to `so` model.  
+`2.dpuCar.ipynb` is main program, which can  run under U96 directly.  
+`DpuCar.py` is a dpu helper prepared for `2.dpuCar.ipynb`.
+
 
 other files:
 
-- img: images used for readme.
-- prebuilt: the prebuilt model.
+- img      : images used for readme.
+- prebuilt : the prebuilt model.
 
 
 
